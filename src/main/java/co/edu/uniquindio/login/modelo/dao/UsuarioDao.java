@@ -13,9 +13,9 @@ public class UsuarioDao {
     }
 
     /*
-    recorre nuestra lista y nos indica
-    en que posición se encuentra un elemento
-    el cual recibe por parámetro:
+    Este método recibe por parámetro el nombre del user
+    si el usuario está en la lista retorna la posición en la
+    que se encuentra, si no se encuentra, retorna -1:
      */
     public int buscar(String usuario)
     {
