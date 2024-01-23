@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.control.Button?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.login.modelo.controllers.ControllerLogin">
    <children>
       <Pane layoutX="-3.0" layoutY="1.0" prefHeight="488.0" prefWidth="684.0">
          <children>
@@ -19,13 +19,13 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="301.0" layoutY="343.0" mnemonicParsing="false" text="Ingresar" />
+            <Button fx:id="btnIngresarUsuario" layoutX="301.0" layoutY="343.0" mnemonicParsing="false" onAction="#btnIngresarUsuario" text="Ingresar" />
             <Label layoutX="172.0" layoutY="139.0" text="User:" />
             <Label layoutX="172.0" layoutY="206.0" text="Password:" />
-            <TextField layoutX="245.0" layoutY="134.0" />
-            <PasswordField layoutX="245.0" layoutY="201.0" />
-            <Button layoutX="570.0" layoutY="419.0" mnemonicParsing="false" text="Registrar" />
-            <CheckBox layoutX="271.0" layoutY="259.0" mnemonicParsing="false" text="Mostrar contraseña" />
+            <TextField fx:id="txtUserIngresar" layoutX="245.0" layoutY="134.0" />
+            <PasswordField fx:id="txtPasswordIngresar" layoutX="245.0" layoutY="201.0" />
+            <Button fx:id="BtnRegistrarUsuario" layoutX="570.0" layoutY="419.0" mnemonicParsing="false" onAction="#BtnRegistrarUsuario" text="Registrar" />
+            <CheckBox fx:id="cbxMostrarPassword" layoutX="271.0" layoutY="259.0" mnemonicParsing="false" text="Show password" />
          </children>
       </Pane>
    </children>
