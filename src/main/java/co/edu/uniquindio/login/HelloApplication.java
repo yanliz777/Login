@@ -17,7 +17,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    /* Este método me permite cambiar de usuario (ejemplo cierro una vista
+    /* Este método me permite cambiar de ventana (ejemplo cierro una vista
      y me carga nuevamente la vita del login)*/
     public void cargarVentanaLogin() {
         try {

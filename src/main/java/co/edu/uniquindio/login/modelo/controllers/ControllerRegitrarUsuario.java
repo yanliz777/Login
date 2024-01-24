@@ -59,7 +59,7 @@ public class ControllerRegitrarUsuario implements Initializable {
      */
     @FXML
     void btnRegistra_registro(ActionEvent event) {
-
+        System.out.println("hola");
         String name = txtName_registro.getText();
         String lastname = txtLastName_registro.getText();
         String email = txtEmail_registro.getText();
