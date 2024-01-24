@@ -11,9 +11,11 @@ public class UsuarioLogic {
      * saber que todo este correcto:
      */
     public static boolean autentificar(String user,String password){
+
         if(obtener(user) != null)
         {
-            Usuario userConsulta = obtener(user);
+            Usuario userConsulta = obtener(user);//crea el usuario
+
             if(userConsulta.getUser().equals(user) && userConsulta.getPassword().equals(password)){
                 return true;
             }

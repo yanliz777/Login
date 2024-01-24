@@ -38,7 +38,8 @@ public class ControllerLogin implements Initializable {
     /**
      *Método que me permite cerrar una ventana
      * para darle apertura a otra y de esta manera no tener
-     * varias ventanas abiertas
+     * varias ventanas abiertas, el botón que le envía por parámetro
+     * es el de la ventana actual que sería el que se cierra
      */
     public void cerrarVentana(Button btn) {
         Stage stage = (Stage) btn.getScene().getWindow();
@@ -48,13 +49,16 @@ public class ControllerLogin implements Initializable {
     @FXML
     void btnIngresarUsuario(ActionEvent event) {
 
-        if(!(txtUserIngresar.getText().isEmpty() && txtPasswordIngresar.getText().isEmpty() ))
+        String user = txtUserIngresar.getText();
+        String password = txtPasswordIngresar.getText();
+
+        if(!(user.isEmpty() && password.isEmpty() ))//si no están vacíos entran al if
         {
-            if(UsuarioLogic.autentificar(txtUserIngresar.getText(),txtPasswordIngresar.getText()))
+            if(UsuarioLogic.autentificar(user,password))
             {
                 cerrarVentana(btnIngresarUsuario);//cierra la ventana del login
                 ventana.cargarVentanaPrincipal();//carga la ventana principal
-                controllerPginaPrincipal.mostrarNombre(txtUserIngresar.getText());
+                //controllerPginaPrincipal.mostrarNombre(user);
             }
             else{
                 mostrarMensaje("Datos de acceso incorrectos", null, "Registrese !! o asegúrese de introducir  los datos correctos ",
@@ -68,11 +72,15 @@ public class ControllerLogin implements Initializable {
 
     }
 
+    /**
+     *Método que se comunica con controllerRegitrarUsuario para hacer
+     * el registro respectivo del usuario en su respectivo controlador
+     */
     @FXML
     void BtnRegistrarUsuario(ActionEvent event) {
         cerrarVentana(BtnRegistrarUsuario);//Me permite cerrar la ventana del login
         //para así darle apertura a la ventana de registro y no tener tantas ventanas abiertas.
-        controllerRegitrarUsuario.registrarUsuario();
+        controllerRegitrarUsuario.registrarUsuario();//nos comunicamos con el controlador controllerRegitrarUsuario
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

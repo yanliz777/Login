@@ -17,10 +17,6 @@ import java.util.ResourceBundle;
 public class ControllerRegitrarUsuario implements Initializable {
     HelloApplication ventana = new HelloApplication();
 
-    public void registrarUsuario() {
-        ventana.cargarRegistro();
-    }
-
     @FXML
     private Button btnRegistrar_registro;
 
@@ -51,6 +47,10 @@ public class ControllerRegitrarUsuario implements Initializable {
     @FXML
     private TextField txtName_registro;
 
+    public void registrarUsuario() {
+        ventana.cargarRegistro();
+    }
+
     /**
      *Método que me permite hacer el registro del usuario
      *haciendo validaciones para que llene los campos. Si el usuario
@@ -59,7 +59,6 @@ public class ControllerRegitrarUsuario implements Initializable {
      */
     @FXML
     void btnRegistra_registro(ActionEvent event) {
-        System.out.println("hola");
         String name = txtName_registro.getText();
         String lastname = txtLastName_registro.getText();
         String email = txtEmail_registro.getText();
@@ -67,10 +66,10 @@ public class ControllerRegitrarUsuario implements Initializable {
         String password = txtPassword_registro.getText();
         String repeatPassword= txtRepeatPassword_registro.getText();
 
-        if(!(name.isEmpty() && lastname.isEmpty() && email.isEmpty() &&
-                user.isEmpty() && password.isEmpty() && repeatPassword.equals(password)))
+        if(!name.isEmpty() && !lastname.isEmpty() && !email.isEmpty() &&
+                !user.isEmpty() && !password.isEmpty()  && (repeatPassword.equals(password)))
         {
-            Usuario usuario = new Usuario(user,password,name,lastname,email);
+            Usuario usuario = new Usuario(user,password,name,lastname,email);//se crea el objeto
 
             if(UsuarioLogic.insertar(usuario))
             {
@@ -81,6 +80,10 @@ public class ControllerRegitrarUsuario implements Initializable {
                 mostrarMensaje("Usuario ya existente", null, " revise los datos ingresados!!",
                         Alert.AlertType.ERROR);
             }
+        }
+        else {
+            mostrarMensaje("Dejo campos vacíos", null, " revise los datos ingresados!!",
+                    Alert.AlertType.ERROR);
         }
     }
 
@@ -138,7 +141,12 @@ public class ControllerRegitrarUsuario implements Initializable {
     void btnBuscar_registro(ActionEvent event) {
 
     }
-
+    /**
+     *Método que me permite cerrar una ventana
+     * para darle apertura a otra y de esta manera no tener
+     * varias ventanas abiertas, el botón que le envía por parámetro
+     * es el de la ventana actual que sería el que se cierra
+     */
     public void cerrarVentana(Button btn) {
         Stage stage = (Stage) btn.getScene().getWindow();
         stage.close();
