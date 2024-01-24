@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -49,6 +51,12 @@ public class ControllerRegitrarUsuario implements Initializable {
     @FXML
     private TextField txtName_registro;
 
+    /**
+     *Método que me permite hacer el registro del usuario
+     *haciendo validaciones para que llene los campos. Si el usuario
+     * no se encuentra en la lista de usuarios se almacena y me carga la
+     * ventana del login.
+     */
     @FXML
     void btnRegistra_registro(ActionEvent event) {
 
@@ -56,15 +64,17 @@ public class ControllerRegitrarUsuario implements Initializable {
         String lastname = txtLastName_registro.getText();
         String email = txtEmail_registro.getText();
         String user = txtUser_registro.getText();
-        String pasword = txtPassword_registro.getText();
+        String password = txtPassword_registro.getText();
         String repeatPassword= txtRepeatPassword_registro.getText();
 
         if(!(name.isEmpty() && lastname.isEmpty() && email.isEmpty() &&
-                user.isEmpty() && pasword.isEmpty() && repeatPassword.equals(txtPassword_registro)))
+                user.isEmpty() && password.isEmpty() && repeatPassword.equals(password)))
         {
-            Usuario usuario = new Usuario(user,pasword,name,lastname,email);
+            Usuario usuario = new Usuario(user,password,name,lastname,email);
 
-            if(UsuarioLogic.insertar(usuario)){
+            if(UsuarioLogic.insertar(usuario))
+            {
+                cerrarVentana(btnRegistrar_registro);//cierra la ventana Login
                 ventana.cargarVentanaLogin();
             }
             else{
@@ -128,6 +138,12 @@ public class ControllerRegitrarUsuario implements Initializable {
     void btnBuscar_registro(ActionEvent event) {
 
     }
+
+    public void cerrarVentana(Button btn) {
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+    }
+
 
     private void mostrarMensaje(String titulo, String head, String content, Alert.AlertType tipo) {
         Alert alerta = new Alert(null);

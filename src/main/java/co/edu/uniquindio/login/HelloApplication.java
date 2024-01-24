@@ -17,8 +17,8 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-    /* Este metopo me permite cambiar de usuario (ejemplo cierro una vista y me carga nuevamente la vita
-   del login)*/
+    /* Este método me permite cambiar de usuario (ejemplo cierro una vista
+     y me carga nuevamente la vita del login)*/
     public void cargarVentanaLogin() {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));

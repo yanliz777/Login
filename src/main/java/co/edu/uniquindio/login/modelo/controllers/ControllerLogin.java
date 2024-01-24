@@ -5,7 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.text.Font;
+import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,15 +35,25 @@ public class ControllerLogin implements Initializable {
         alerta.show();
     }
 
+    /**
+     *Método que me permite cerrar una ventana
+     * para darle apertura a otra y de esta manera no tener
+     * varias ventanas abiertas
+     */
+    public void cerrarVentana(Button btn) {
+        Stage stage = (Stage) btn.getScene().getWindow();
+        stage.close();
+    }
+
     @FXML
     void btnIngresarUsuario(ActionEvent event) {
 
         if(!(txtUserIngresar.getText().isEmpty() && txtPasswordIngresar.getText().isEmpty() ))
         {
-            if(UsuarioLogic.autentificar(txtUserIngresar.getText(),txtPasswordIngresar.getText())){
-                mostrarMensaje("Bienvenido ", null, " datos correctos",
-                        Alert.AlertType.INFORMATION);
-                ventana.cargarVentanaPrincipal();
+            if(UsuarioLogic.autentificar(txtUserIngresar.getText(),txtPasswordIngresar.getText()))
+            {
+                cerrarVentana(btnIngresarUsuario);//cierra la ventana del login
+                ventana.cargarVentanaPrincipal();//carga la ventana principal
                 controllerPginaPrincipal.mostrarNombre(txtUserIngresar.getText());
             }
             else{
@@ -60,6 +70,8 @@ public class ControllerLogin implements Initializable {
 
     @FXML
     void BtnRegistrarUsuario(ActionEvent event) {
+        cerrarVentana(BtnRegistrarUsuario);//Me permite cerrar la ventana del login
+        //para así darle apertura a la ventana de registro y no tener tantas ventanas abiertas.
         controllerRegitrarUsuario.registrarUsuario();
     }
     @Override
