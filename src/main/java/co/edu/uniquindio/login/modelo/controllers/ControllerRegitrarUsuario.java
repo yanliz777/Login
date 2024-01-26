@@ -16,37 +16,28 @@ import java.util.ResourceBundle;
 
 public class ControllerRegitrarUsuario implements Initializable {
     HelloApplication ventana = new HelloApplication();
-
     @FXML
     private Button btnRegistrar_registro;
-
     @FXML
     private Button btnEliminar_registro;
-
     @FXML
     private Button btnModificar_registro;
-
     @FXML
     private TextField txtPassword_registro;
-
     @FXML
     private TextField txtLastName_registro;
-
     @FXML
     private TextField txtUser_registro;
-
     @FXML
     private TextField txtRepeatPassword_registro;
-
     @FXML
     private TextField txtEmail_registro;
-
     @FXML
     private Button btnBuscar_registro;
-
     @FXML
     private TextField txtName_registro;
 
+    //Método que me carga la ventana de registro de usuario:
     public void registrarUsuario() {
         ventana.cargarRegistro();
     }

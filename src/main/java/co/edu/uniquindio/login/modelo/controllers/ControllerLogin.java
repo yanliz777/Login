@@ -12,8 +12,7 @@ import java.util.ResourceBundle;
 public class ControllerLogin implements Initializable {
 
     ControllerRegitrarUsuario controllerRegitrarUsuario = new ControllerRegitrarUsuario();
-    ControllerPginaPrincipal controllerPginaPrincipal = new ControllerPginaPrincipal();
-    HelloApplication ventana = new HelloApplication();
+    HelloApplication ventana = new HelloApplication();//Para darle manejo a las ventanas
     @FXML
     private Button BtnRegistrarUsuario;
 
@@ -46,6 +45,10 @@ public class ControllerLogin implements Initializable {
         stage.close();
     }
 
+    /**
+     *Método que me permite realizar el ingreso/login
+     * al sistema, si no está registrado debe hacerlo primero
+     */
     @FXML
     void btnIngresarUsuario(ActionEvent event) {
 
